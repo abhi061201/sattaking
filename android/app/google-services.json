@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "318831759687",
+    "project_id": "sattaking-5e360",
+    "storage_bucket": "sattaking-5e360.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318831759687:android:25145cc536414abc79fc62",
+        "android_client_info": {
+          "package_name": "com.sattaking.janta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318831759687-205gne1f6a48l8vu3k8uegmtbnatk6ea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sattaking.janta",
+            "certificate_hash": "c2c579c0f8efd1b6193f5145ccf1cb369a8fe711"
+          }
+        },
+        {
+          "client_id": "318831759687-bg22tsfs12lnpd0jkeq030bh5k12nkaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXql8oeL4kslHUEdN59To4KwkfW_-Q-64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318831759687-bg22tsfs12lnpd0jkeq030bh5k12nkaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
