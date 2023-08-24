@@ -28,7 +28,7 @@ class SattaKing extends StatelessWidget {
   const SattaKing({super.key});
   @override
   Widget build(BuildContext context) {
-    log("working");
+    // log("working");
     final textTheme = Theme.of(context).textTheme;
     return GetMaterialApp(
       

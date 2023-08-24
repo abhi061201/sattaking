@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sattaking/app/auth/sign%20Up/view/signup.dart';
 import 'package:sattaking/app/game/view/game_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,15 +20,18 @@ class login_view extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Container(
-            width: Get.width,
-            height: Get.height,
-            decoration: BoxDecoration(color: Colors.transparent),
+        body: Container(
+          width: Get.width,
+          height: Get.height,
+          decoration: BoxDecoration(color: Colors.transparent),
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: Get.height * 0.18,
+                ),
                 Container(
                   height: Get.height * 0.18,
                   child: Image(
@@ -40,37 +44,33 @@ class login_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield('Mobile Number :', TextInputType.phone, 10),
-                TextButton(
-                  onPressed: () {
-                    
-                  },
-                  style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: Size(50, 30),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      alignment: Alignment.centerLeft),
-                  child: Text(
-                    'Send OTP..',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
-                ),
+                customfield(
+                    'Mobile Number :', TextInputType.phone, 10, Icons.call),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                customfield('OTP :', TextInputType.phone, 4),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: Size(50, 30),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      alignment: Alignment.centerLeft),
-                  child: Text(
-                    'Resend OTP..',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
-                ),
+                customfield(
+                    'Password :', TextInputType.visiblePassword, 4, Icons.lock),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size(50, 30),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          alignment: Alignment.centerLeft),
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ).paddingSymmetric(horizontal: 12),
                 InkWell(
                   onTap: () {
                     Get.to(game_view());
@@ -95,34 +95,84 @@ class login_view extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: Get.height * 0.04,
-                ),
-                Text(
-                  'OR',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  height: Get.height * 0.03,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.facebook,
-                        color: appcolor().bluecolor,
-                        size: 30,
+                    Text(
+                      'Not a Member?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.googlePlus,
-                        color: appcolor().redcolor,
-                        size: 30,
+                    TextButton(
+                      onPressed: () {
+                        Get.offAll(()=>signup_view());
+                      },
+                      child: Text(
+                        'Register Now',
+                        style: TextStyle(
+                          color: appcolor().ambercolor,
+                          fontSize: 16,
+                        ),
                       ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: Get.height * 0.15,
+                ),
+                Text(
+                  'Contact Us',
+                  style: TextStyle(
+                    color: appcolor().ambercolor,
+                    fontSize: 18,
+                  ),
+                ),
+                Divider(
+                  color: appcolor().ambercolor,
+                  thickness: 1,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.call,
+                          color: appcolor().ambercolor,
+                        ),
+                        Text(
+                          '+91 12345 56787',
+                          style: TextStyle(
+                            color: appcolor().ambercolor,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.whatsapp,
+                          color: Colors.green,
+                        ),
+                        Text(
+                          '+91 12345 56787',
+                          style: TextStyle(
+                            color: appcolor().ambercolor,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
+            ).paddingSymmetric(
+              horizontal: 20,
             ),
           ),
         ),
@@ -130,32 +180,49 @@ class login_view extends StatelessWidget {
     );
   }
 
-  Widget customfield(String hintText, TextInputType? keyType, int maxElement) {
+  Widget customfield(
+      String hintText, TextInputType? keyType, int maxElement, IconData icon) {
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(
+          color: appcolor().ambercolor,
+        ),
         color: Colors.black,
       ),
       width: Get.width * 0.8,
       height: Get.height * 0.065,
-      child: TextFormField(
-        keyboardType: keyType,
-        maxLength: maxElement,
-        style: TextStyle(
-          color: appcolor().ambercolor,
-          fontSize: 18,
-        ),
-        decoration: InputDecoration(
-          counter: Offstage(),
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 15,
+      child: Row(
+        children: [
+          Flexible(
+            child: TextFormField(
+              keyboardType: keyType,
+              maxLength: maxElement,
+              style: TextStyle(
+                color: appcolor().ambercolor,
+                fontSize: 18,
+              ),
+              textAlignVertical: TextAlignVertical.top,
+              decoration: InputDecoration(
+                counter: Offstage(),
+                border: InputBorder.none,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                hintText: hintText,
+                hintStyle: TextStyle(
+                  color: appcolor().ambercolor,
+                  fontSize: 18,
+                ),
+              ),
+            ),
           ),
-          hintText: hintText,
-          hintStyle: TextStyle(
+          Icon(
+            icon,
             color: appcolor().ambercolor,
-            fontSize: 18,
-          ),
-        ),
+          ).paddingOnly(
+            right: 10,
+          )
+        ],
       ),
     );
   }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:sattaking/app/all_game/view/all_games_view.dart';
 import 'package:sattaking/app/auth/login/view/login.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/sign%20up%20controller.dart';
-import 'package:sattaking/app/auth/sign%20Up/view/mobile_otp_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 
-class signup_view extends StatelessWidget {
-  signup_view({super.key});
+class mobile_otp_view extends StatelessWidget {
+  mobile_otp_view({super.key});
   signUpController controller = Get.put(signUpController());
   @override
   Widget build(BuildContext context) {
@@ -45,30 +45,51 @@ class signup_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield('Name :', TextInputType.name, 30,
-                    controller.nameController, Icons.person),
-                SizedBox(
-                  height: Get.height * 0.01,
-                ),
-                customfield('Email id :', TextInputType.emailAddress, 30,
-                    controller.emailcontroller, Icons.email),
-                SizedBox(
-                  height: Get.height * 0.01,
-                ),
                 customfield('Mobile Number :', TextInputType.phone, 10,
-                    controller.phone_no_Controller, Icons.call),
-                SizedBox(
-                  height: Get.height * 0.01,
+                    TextEditingController(), Icons.call),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                            // padding: EdgeInsets.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                        child: Text(
+                          'Send OTP',
+                          style: TextStyle(
+                            color: appcolor().ambercolor,
+                            fontSize: 15,
+                          ),
+                        )).paddingOnly(right: 10)
+                  ],
                 ),
-                customfield('Password :', TextInputType.phone, 10,
-                    controller.password_controller, Icons.lock),
+                customfield('Enter OTP :', TextInputType.phone, 10,
+                    TextEditingController(), Icons.lock),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                            // padding: EdgeInsets.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                        child: Text(
+                          'Resend OTP',
+                          style: TextStyle(
+                            color: appcolor().ambercolor,
+                            fontSize: 15,
+                          ),
+                        )).paddingOnly(right: 10)
+                  ],
+                ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
                 InkWell(
                   onTap: () {
                     // controller.signUpUsingEmail_Password();
-                    Get.to(()=> mobile_otp_view());
+                    Get.to(all_game_view());
                   },
                   child: Container(
                     margin: EdgeInsets.all(
@@ -89,35 +110,9 @@ class signup_view extends StatelessWidget {
                     ),
                   ),
                 ),
+                
                 SizedBox(
-                  height: Get.height * 0.03,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already Registered?',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.offAll(() => login_view());
-                      },
-                      child: Text(
-                        'Login Now',
-                        style: TextStyle(
-                          color: appcolor().ambercolor,
-                          fontSize: 16,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: Get.height * 0.08,
+                  height: Get.height * 0.25,
                 ),
                 Text(
                   'Contact Us',
@@ -179,7 +174,6 @@ class signup_view extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color: appcolor().ambercolor,
-        
         ),
         borderRadius: BorderRadius.circular(5),
         color: Colors.black,

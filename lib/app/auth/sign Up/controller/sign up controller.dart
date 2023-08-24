@@ -8,7 +8,7 @@ class signUpController extends GetxController {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController password_controller = TextEditingController();
   TextEditingController phone_no_Controller = TextEditingController();
-  TextEditingController otpController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   void signUpUsingEmail_Password() async {
     String email = password_controller.text.trim().toString();
