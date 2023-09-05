@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sattaking/app/all_game/view/all_games_view.dart';
+import 'package:sattaking/app/auth/login/controller/login_controller.dart';
+import 'package:sattaking/app/auth/sign%20Up/view/forgot_password_view.dart';
 import 'package:sattaking/app/auth/sign%20Up/view/signup.dart';
 import 'package:sattaking/app/game/view/game_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sattaking/app/notifications/notification.dart';
 
-class login_view extends StatelessWidget {
+class login_view extends StatefulWidget {
   const login_view({super.key});
+
+  @override
+  State<login_view> createState() => _login_viewState();
+}
+
+class _login_viewState extends State<login_view> {
+  NotificationServices services = NotificationServices();
+  loginController controller = Get.put(loginController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    // services.requestNotificationPermission();
+    // services.firebaseInit();
+    // services.getDeviceToken().then((value) {
+    //   print('device token: ' + value.toString());
+    // } );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    controller.mobilecontroller.clear();
+    controller.password_controller.clear();
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -44,18 +70,20 @@ class login_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield(
-                    'Mobile Number :', TextInputType.phone, 10, Icons.call),
+                customfield('Mobile Number :', TextInputType.phone, 10,
+                    Icons.call, controller.mobilecontroller, false),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                customfield(
-                    'Password :', TextInputType.visiblePassword, 4, Icons.lock),
+                customfield('Password :', TextInputType.visiblePassword, 20,
+                    Icons.lock, controller.password_controller, true),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(forgot_Password_view());
+                      },
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           minimumSize: Size(50, 30),
@@ -71,27 +99,38 @@ class login_view extends StatelessWidget {
                     ),
                   ],
                 ).paddingSymmetric(horizontal: 12),
-                InkWell(
-                  onTap: () {
-                    Get.to(game_view());
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(
-                      5,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
+                Obx(
+                  () =>controller.show_Circle.value==false? InkWell(
+                    onTap: () {
+                      String mobile_no =
+                          controller.mobilecontroller.text.trim().toString();
+                      String password =
+                          controller.password_controller.text.trim().toString();
+
+                      controller.FirebaseLogin(mobile_no, password);
+                      // Get.to(all_game_view());
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(
                         5,
                       ),
-                      color: appcolor().ambercolor,
-                    ),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: 18,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          5,
+                        ),
+                        color: appcolor().ambercolor,
+                      ),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
+                  ):CircularProgressIndicator(
+                    color: appcolor().ambercolor,
                   ),
                 ),
                 SizedBox(
@@ -109,7 +148,7 @@ class login_view extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offAll(()=>signup_view());
+                        Get.offAll(() => signup_view());
                       },
                       child: Text(
                         'Register Now',
@@ -180,8 +219,8 @@ class login_view extends StatelessWidget {
     );
   }
 
-  Widget customfield(
-      String hintText, TextInputType? keyType, int maxElement, IconData icon) {
+  Widget customfield(String hintText, TextInputType? keyType, int maxElement,
+      IconData icon, TextEditingController textcontroller, bool showelement) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -196,6 +235,8 @@ class login_view extends StatelessWidget {
         children: [
           Flexible(
             child: TextFormField(
+              obscureText: showelement,
+              controller: textcontroller,
               keyboardType: keyType,
               maxLength: maxElement,
               style: TextStyle(

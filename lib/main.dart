@@ -5,36 +5,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:sattaking/app/all_game/view/all_games_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/notifications/notification.dart';
+import 'package:sattaking/app/profile/view/profile_view.dart';
 import 'package:sattaking/common/starting_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Future main()async {
+import 'app/auth/login/view/login.dart';
+
+Future main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
-    [
+  [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ],
   );
-  Future.delayed(Duration(seconds: 3));
-  FlutterNativeSplash.remove();
-  runApp(SattaKing());
-  
+  Future.delayed(Duration(seconds: 1)).then((value) {
+    FlutterNativeSplash.remove();
+    runApp(SattaKing());
+  });
 }
 
 class SattaKing extends StatelessWidget {
   const SattaKing({super.key});
+
   @override
   Widget build(BuildContext context) {
     // log("working");
     final textTheme = Theme.of(context).textTheme;
     return GetMaterialApp(
-      
-      
       theme: ThemeData(
-      
         textTheme: GoogleFonts.podkovaTextTheme(textTheme).copyWith(
           bodySmall: Theme.of(context).textTheme.bodySmall!.apply(
                 color: appcolor().ambercolor,
@@ -46,10 +49,9 @@ class SattaKing extends StatelessWidget {
                 color: appcolor().ambercolor,
               ),
         ),
-        
       ),
       debugShowCheckedModeBanner: false,
-      home: starting_view(),
+      home: login_view(),
     );
   }
 }

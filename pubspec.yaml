@@ -26,11 +26,16 @@ dependencies:
   firebase_auth: ^4.7.3
   cloud_firestore: ^4.8.5
   firebase_storage: ^11.2.6
+  app_settings: ^5.0.0
+  image_picker: ^1.0.2
+  url_launcher: ^6.1.12
+  firebase_messaging: ^14.6.7
+  flutter_local_notifications: ^15.1.1
+  uuid: ^4.0.0
 flutter_native_splash:
   android: true
   ios: true
   windows: false
-
   image: "assets/images/splash_logo.png"
   background_image: "assets/images/background 1.png"
 

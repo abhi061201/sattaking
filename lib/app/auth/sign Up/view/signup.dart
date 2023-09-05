@@ -1,16 +1,24 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sattaking/app/auth/login/view/login.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/sign%20up%20controller.dart';
-import 'package:sattaking/app/auth/sign%20Up/view/mobile_otp_view.dart';
+import 'package:sattaking/app/auth/sign%20Up/view/forgot_password_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/profile/view/profile_view.dart';
 
 class signup_view extends StatelessWidget {
   signup_view({super.key});
   signUpController controller = Get.put(signUpController());
   @override
   Widget build(BuildContext context) {
+    controller.emailcontroller.clear();
+    controller.nameController.clear();
+    controller.phone_no_Controller.clear();
+    controller.password_controller.clear();
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -46,48 +54,124 @@ class signup_view extends StatelessWidget {
                   height: Get.height * 0.02,
                 ),
                 customfield('Name :', TextInputType.name, 30,
-                    controller.nameController, Icons.person),
+                    controller.nameController, Icons.person, false),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
                 customfield('Email id :', TextInputType.emailAddress, 30,
-                    controller.emailcontroller, Icons.email),
+                    controller.emailcontroller, Icons.email, false),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
                 customfield('Mobile Number :', TextInputType.phone, 10,
-                    controller.phone_no_Controller, Icons.call),
+                    controller.phone_no_Controller, Icons.call, false),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                customfield('Password :', TextInputType.phone, 10,
-                    controller.password_controller, Icons.lock),
+                Obx(
+                  () => Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: appcolor().ambercolor,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.black,
+                    ),
+                    width: Get.width * 0.8,
+                    height: Get.height * 0.065,
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: TextFormField(
+                            obscureText: !controller.showPassword.value,
+                            controller: controller.password_controller,
+                            keyboardType: TextInputType.visiblePassword,
+                            maxLength: 20,
+                            style: TextStyle(
+                              color: appcolor().ambercolor,
+                              fontSize: 18,
+                            ),
+                            textAlignVertical: TextAlignVertical.top,
+                            decoration: InputDecoration(
+                              counter: Offstage(),
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 0),
+                              hintText: 'Password :',
+                              hintStyle: TextStyle(
+                                color: appcolor().ambercolor,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            controller.showPassword.value =
+                                !controller.showPassword.value;
+                            // log(controller.showPassword.value.toString());
+                            // log('hii');
+                          },
+                          child: Icon(
+                            controller.showPassword.value == false
+                                ? Icons.lock
+                                : Icons.lock_open,
+                            color: appcolor().ambercolor,
+                          ).paddingOnly(
+                            right: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                InkWell(
-                  onTap: () {
-                    // controller.signUpUsingEmail_Password();
-                    Get.to(()=> mobile_otp_view());
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(
-                      5,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        5,
-                      ),
-                      color: appcolor().ambercolor,
-                    ),
-                    child: Text(
-                      'Register Now',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+                Obx(
+                  () => controller.showCircle.value == false
+                      ? InkWell(
+                          onTap: () async {
+                            // DocumentSnapshot? snapshot =
+                            //     await FirebaseFirestore.instance
+                            //         .collection('Users')
+                            //         .doc(
+                            //           controller.phone_no_Controller.text
+                            //               .trim()
+                            //               .toString(),
+                            //         )
+                            //         .get();
+                            // if(snapshot==null)
+                            // {
+                              
+                            // }
+                            controller.signUpUsingEmail_Password();
+                            
+                            // Get.to(profile_view());
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                              5,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                5,
+                              ),
+                              color: appcolor().ambercolor,
+                            ),
+                            child: Text(
+                              'Register Now',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        )
+                      : CircularProgressIndicator(
+                          color: appcolor().ambercolor,
+                        ),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
@@ -174,12 +258,11 @@ class signup_view extends StatelessWidget {
   }
 
   Widget customfield(String hintText, TextInputType? keyType, int maxElement,
-      TextEditingController controller, IconData icon) {
+      TextEditingController textcontroller, IconData icon, bool showelement) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
           color: appcolor().ambercolor,
-        
         ),
         borderRadius: BorderRadius.circular(5),
         color: Colors.black,
@@ -190,7 +273,8 @@ class signup_view extends StatelessWidget {
         children: [
           Flexible(
             child: TextFormField(
-              controller: controller,
+              obscureText: false,
+              controller: textcontroller,
               keyboardType: keyType,
               maxLength: maxElement,
               style: TextStyle(
@@ -211,11 +295,14 @@ class signup_view extends StatelessWidget {
               ),
             ),
           ),
-          Icon(
-            icon,
-            color: appcolor().ambercolor,
-          ).paddingOnly(
-            right: 10,
+          InkWell(
+            onTap: () {},
+            child: Icon(
+              icon,
+              color: appcolor().ambercolor,
+            ).paddingOnly(
+              right: 10,
+            ),
           )
         ],
       ),

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
+import 'package:sattaking/app/game/view/game_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/url_Launcher_helper.dart';
+import 'package:sattaking/app/profile/view/profile_view.dart';
 
 class all_game_view extends StatelessWidget {
   all_game_view({super.key});
-
+  urlLauncherController urlController = Get.put(urlLauncherController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,153 +23,183 @@ class all_game_view extends StatelessWidget {
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image(
-                  image: AssetImage(
-                    'assets/images/logo 1.png',
-                  ),
-                  height: Get.height * 0.08,
-                ),
-              ],
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
             ),
-            actions: [
-              InkWell(
-                onTap: () {},
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      child: Icon(Icons.person),
-                      radius: 15,
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  backgroundColor: Colors.transparent,
+                  expandedHeight: Get.height * 0.09,
+                  // snap: true,
+                  floating: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image(
+                          image: AssetImage(
+                            'assets/images/logo 1.png',
+                          ),
+                          height: Get.height * 0.08,
+                        ),
+                        InkWell(
+                          onTap: (){
+                            urlController.LaunchUrl();
+                          },
+                          child: Container(
+                            height: Get.height*0.08,
+                            width: Get.width*0.27,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/674 1.png'),
+                                fit: BoxFit.fill,
+                              )
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.off(profile_view());
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                child: Icon(Icons.person),
+                                radius: 15,
+                              ),
+                              Text(
+                                '  Profile',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      '  Profile',
+                  ),
+                ),
+                SliverList.list(
+                  children: [
+                    Divider(
+                      color: appcolor().ambercolor,
+                      thickness: 1,
+                    ),
+                    Center(
+                        child: Text(
+                      'Results : City',
                       style: TextStyle(
                         color: Colors.white,
+                      ),
+                    )),
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Delhi', () {
+                      Get.to(game_view());
+                    }, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Noida', () {
+                      Get.to(game_view());
+                    }, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Gaz', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Rohtak', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Mumbai', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Kashmir', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('UP', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Bihar', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Lucknow', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Noida', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    customContainer('UP', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Bihar', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Lucknow', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    // 1-10
+                    customContainer('Noida', () {}, () {}),
+
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    Center(
+                      child: Container(
+                        child: Text(
+                          'Helpline No: +91 12345 56787',
+                          style: TextStyle(
+                              color: appcolor().ambercolor, fontSize: 16),
+                        ),
                       ),
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                    child: Text(
-                  'Results : City',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Delhi'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Noida'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Gaz'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Rohtak'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Mumbai'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Kashmir'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('UP'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Bihar'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Lucknow'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Noida'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                customContainer('UP'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Bihar'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Lucknow'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // 1-10
-                customContainer('Noida'),
-
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                Center(
-                  child: Container(
-                    child: Text(
-                      'Helpline No: +91 12345 56787',
-                      style: TextStyle(
-                        color: appcolor().ambercolor,
-                        fontSize: 16
-                      ),
-                    ),
-                  ),
-                ),
               ],
-            ).paddingSymmetric(
-              horizontal: 10,
-              vertical: 5,
             ),
           ),
         ),
@@ -173,7 +207,8 @@ class all_game_view extends StatelessWidget {
     );
   }
 
-  Widget customContainer(String CityName) {
+  Widget customContainer(
+      String CityName, Callback openCallBack, Callback closeCallback) {
     return Container(
       width: Get.width,
       padding: EdgeInsets.symmetric(
@@ -196,42 +231,29 @@ class all_game_view extends StatelessWidget {
               fontSize: 15,
             ),
           ),
-          Text(
-            'Open',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
+          InkWell(
+            onTap: (){
+              Get.to(game_view());
+            },
+            child: Text(
+              'Open',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
             ),
           ),
-          Text(
-            'Close',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
+          InkWell(
+            onTap: () {},
+            child: Text(
+              'Close',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget belowContainer(int initial, int final_val) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: 2,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 5,
-      ),
-      decoration: BoxDecoration(
-        color: appcolor().ambercolor,
-      ),
-      child: Text(
-        '${initial}-${final_val}',
-        style: TextStyle(
-          color: Colors.white,
-        ),
       ),
     );
   }

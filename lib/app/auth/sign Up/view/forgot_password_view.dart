@@ -3,11 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sattaking/app/all_game/view/all_games_view.dart';
 import 'package:sattaking/app/auth/login/view/login.dart';
+import 'package:sattaking/app/auth/sign%20Up/controller/forgot_password_controller.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/sign%20up%20controller.dart';
 import 'package:sattaking/app/global/colors.dart';
 
-class mobile_otp_view extends StatelessWidget {
-  mobile_otp_view({super.key});
+class forgot_Password_view extends StatelessWidget {
+  forgot_Password_view({super.key});
+  forgot_password_controller forgot_controller =
+      Get.put(forgot_password_controller());
   signUpController controller = Get.put(signUpController());
   @override
   Widget build(BuildContext context) {
@@ -46,75 +49,76 @@ class mobile_otp_view extends StatelessWidget {
                   height: Get.height * 0.02,
                 ),
                 customfield('Mobile Number :', TextInputType.phone, 10,
-                    TextEditingController(), Icons.call),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                            // padding: EdgeInsets.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                        child: Text(
-                          'Send OTP',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 15,
-                          ),
-                        )).paddingOnly(right: 10)
-                  ],
+                    forgot_controller.phone_controller, Icons.call),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //                       ],
+                // ),
+                SizedBox(
+                  height: Get.height * 0.02,
                 ),
-                customfield('Enter OTP :', TextInputType.phone, 10,
-                    TextEditingController(), Icons.lock),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                            // padding: EdgeInsets.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                        child: Text(
-                          'Resend OTP',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 15,
+                // Obx(
+                //   () => forgot_controller.showcircle.value == false
+                //       ? TextButton(
+                //           onPressed: () {
+                //             forgot_controller.resetUserPassword();
+                //           },
+                //           style: TextButton.styleFrom(
+                //               // padding: EdgeInsets.zero,
+                //               tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                //           child: Text(
+                //             'Send Email',
+                //             style: TextStyle(
+                //               color: appcolor().ambercolor,
+                //               fontSize: 15,
+                //             ),
+                //           ),
+                //         ).paddingOnly(right: 10)
+                //       : CircularProgressIndicator(
+                //           color: appcolor().ambercolor,
+                //         ),
+                // ),
+
+                // SizedBox(
+                //   height: Get.height * 0.007,
+                // ),
+                Obx(
+                  () => forgot_controller.showcircle.value == false
+                      ? InkWell(
+                          onTap: () {
+                            // controller.signUpUsingEmail_Password();
+                            // Get.offAll(login_view());
+                            forgot_controller.resetUserPassword();
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                              5,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                5,
+                              ),
+                              color: appcolor().ambercolor,
+                            ),
+                            child: Text(
+                              'Send Email',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
-                        )).paddingOnly(right: 10)
-                  ],
+                        )
+                      : CircularProgressIndicator(
+                          color: appcolor().ambercolor,
+                        ),
                 ),
                 SizedBox(
-                  height: Get.height * 0.03,
+                  height: Get.height * 0.4,
                 ),
-                InkWell(
-                  onTap: () {
-                    // controller.signUpUsingEmail_Password();
-                    Get.to(all_game_view());
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(
-                      5,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        5,
-                      ),
-                      color: appcolor().ambercolor,
-                    ),
-                    child: Text(
-                      'Register Now',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
-                
-                SizedBox(
-                  height: Get.height * 0.25,
-                ),
-                Text(
+              Text(
                   'Contact Us',
                   style: TextStyle(
                     color: appcolor().ambercolor,
