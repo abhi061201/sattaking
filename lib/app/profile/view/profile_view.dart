@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/custom_drawer.dart';
 import 'package:sattaking/app/global/firebase_helper.dart';
 import 'package:sattaking/app/profile/view/edit_profile_view.dart';
 
@@ -22,6 +23,7 @@ class profile_view extends StatelessWidget {
           ),
         ),
         child: Scaffold(
+          endDrawer: custom_drawer(),
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.symmetric(

@@ -76,6 +76,7 @@ class signUpController extends GetxController {
           password_controller.clear();
           phone_no_Controller.clear();
           Get.snackbar('Success', 'User Account created please login');
+          
           Get.offAll(login_view());
         }
       } else {

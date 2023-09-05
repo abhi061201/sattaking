@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:sattaking/app/game/view/game_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/custom_drawer.dart';
 import 'package:sattaking/app/global/url_Launcher_helper.dart';
 import 'package:sattaking/app/profile/view/profile_view.dart';
 
@@ -22,6 +23,7 @@ class all_game_view extends StatelessWidget {
           ),
         ),
         child: Scaffold(
+          endDrawer: custom_drawer(),
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.symmetric(
@@ -29,8 +31,10 @@ class all_game_view extends StatelessWidget {
               vertical: 10,
             ),
             child: CustomScrollView(
+              
               slivers: [
                 SliverAppBar(
+                  
                   automaticallyImplyLeading: false,
                   backgroundColor: Colors.transparent,
                   expandedHeight: Get.height * 0.09,
@@ -38,7 +42,7 @@ class all_game_view extends StatelessWidget {
                   floating: true,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Image(
                           image: AssetImage(
@@ -46,41 +50,27 @@ class all_game_view extends StatelessWidget {
                           ),
                           height: Get.height * 0.08,
                         ),
-                        InkWell(
-                          onTap: (){
-                            urlController.LaunchUrl();
-                          },
-                          child: Container(
-                            height: Get.height*0.08,
-                            width: Get.width*0.27,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/674 1.png'),
-                                fit: BoxFit.fill,
-                              )
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Get.off(profile_view());
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                child: Icon(Icons.person),
-                                radius: 15,
-                              ),
-                              Text(
-                                '  Profile',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // InkWell(
+                        //   onTap: (){
+                        //     urlController.LaunchUrl();
+                        //   },
+                        //   child: Container(
+                        //     height: Get.height*0.08,
+                        //     width: Get.width*0.27,
+                        //     decoration: BoxDecoration(
+                        //       image: DecorationImage(
+                        //         image: AssetImage('assets/images/674 1.png'),
+                        //         fit: BoxFit.fill,
+                        //       )
+                        //     ),
+                        //   ),
+                        // ),
+                        // InkWell(
+                        //   onTap: () {
+                        //     Get.off(profile_view());
+                        //   },
+                        //   child: Icon(Icons.more_horiz_outlined, color: appcolor().am,)
+                        // ),
                       ],
                     ),
                   ),

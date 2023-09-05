@@ -18,14 +18,12 @@ class loginController extends GetxController {
       Get.snackbar('Error', 'Please Input correct Mobile Number',
           snackPosition: SnackPosition.TOP);
       show_Circle.value = false;
-    } 
-    else if (check(MobileNumber)) {
+    } else if (check(MobileNumber)) {
       Get.snackbar('Error', 'Issue in phone no',
           snackPosition: SnackPosition.TOP);
       // showcircle.value = false;
       show_Circle.value = false;
-    }
-    else if (Password.length < 6) {
+    } else if (Password.length < 6) {
       Get.snackbar('Error', 'Password should contain atleast 6 characters',
           snackPosition: SnackPosition.TOP);
       show_Circle.value = false;
@@ -55,6 +53,7 @@ class loginController extends GetxController {
       }
     }
   }
+
   bool check(String phone) {
     // log('hii');
     var char = phone[0];
