@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:sattaking/app/History/view/History_view.dart';
+import 'package:sattaking/app/Wallet/view/add_funds_view.dart';
 import 'package:sattaking/app/Wallet/view/wallet_view.dart';
+import 'package:sattaking/app/Wallet/view/withdraw_funds_view.dart';
 import 'package:sattaking/app/all_game/view/all_games_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 import 'package:sattaking/app/profile/view/profile_view.dart';
@@ -95,11 +97,19 @@ class custom_drawer extends StatelessWidget {
               },
             ),
             drawerItemWidget(
-              text: 'Wallet',
+              text: 'Add Fund',
               iconData: Icons.wallet,
               callback: () {
                 Get.back();
-                Get.to(Wallet_view());
+                Get.to(add_funds_view());
+              },
+            ),
+             drawerItemWidget(
+              text: 'Withdraw Fund',
+              iconData: Icons.wallet,
+              callback: () {
+                Get.back();
+                Get.to(withdraw_funds_view());
               },
             ),
             drawerItemWidget(
@@ -116,8 +126,8 @@ class custom_drawer extends StatelessWidget {
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'Game Rate',
-              iconData: FontAwesomeIcons.indianRupeeSign,
+              text: 'App Rating',
+              iconData: FontAwesomeIcons.star,
               callback: () {},
             ),
             drawerItemWidget(

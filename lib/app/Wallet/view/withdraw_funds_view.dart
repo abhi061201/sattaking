@@ -7,8 +7,8 @@ import 'package:sattaking/app/global/colors.dart';
 import 'package:sattaking/app/global/contactUs_Widget.dart';
 import 'package:sattaking/app/global/custom_drawer.dart';
 
-class add_funds_view extends StatelessWidget {
-  add_funds_view({super.key});
+class withdraw_funds_view extends StatelessWidget {
+  withdraw_funds_view({super.key});
   add_fund_controller controller = Get.put(add_fund_controller());
   @override
   Widget build(BuildContext context) {
@@ -75,13 +75,13 @@ class add_funds_view extends StatelessWidget {
                 ),
                 SliverList.list(children: [
                   SizedBox(
-                    height: Get.height * 0.2,
+                    height: Get.height * 0.15,
                   ),
                   Column(
                     children: [
                       Container(
                         child: Text(
-                          'Add Funds',
+                          'Withdraw Funds',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -90,6 +90,61 @@ class add_funds_view extends StatelessWidget {
                       ),
                       SizedBox(
                         height: Get.height * 0.02,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: appcolor().ambercolor,
+                          ),
+                          color: Colors.black,
+                        ),
+                        // width: Get.width * 0.8,
+                        height: Get.height * 0.065,
+                        child: Row(
+
+                          children: [
+                            Text(
+                              'Available Points',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              '10000',
+                              style: TextStyle(
+                                color: appcolor().ambercolor,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Icon(
+                              FontAwesomeIcons.indianRupeeSign,
+                              color: appcolor().ambercolor,
+                            ).paddingOnly(
+                              right: 10,
+                              left: 5
+                            )
+                          ],
+                        ).paddingOnly(left: 10),
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.03,
+                      ),
+                      Container(
+                        child: Text(
+                          'You Can Only Withdraw Funds\nBetween 10:00 AM To 3:00 PM ',
+                          style: TextStyle(
+                            color: appcolor().ambercolor,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.01,
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -117,7 +172,7 @@ class add_funds_view extends StatelessWidget {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 0),
-                                  hintText: 'Add Funds',
+                                  hintText: 'Withdraw Points',
                                   hintStyle: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -137,25 +192,28 @@ class add_funds_view extends StatelessWidget {
                       SizedBox(
                         height: Get.height * 0.03,
                       ),
-                      Container(
-                        child: Text(
-                          'Select Payment Mthods',
-                          style: TextStyle(
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          margin: EdgeInsets.all(
+                            5,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              5,
+                            ),
                             color: appcolor().ambercolor,
-                            fontSize: 20,
+                          ),
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          custom_container('assets/images/paytm.png', () {}),
-                          custom_container(
-                              'assets/images/PhonePe-Logo.png', () {}),
-                        ],
-                      ),
-                      custom_container(
-                          'assets/images/Google_Pay_Logo 1.png', () {}),
                       SizedBox(
                         height: Get.height * 0.23,
                       ),

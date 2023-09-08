@@ -7,7 +7,9 @@ import 'package:sattaking/app/auth/sign%20Up/view/signup.dart';
 import 'package:sattaking/app/game/view/game_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sattaking/app/global/contactUs_Widget.dart';
 import 'package:sattaking/app/notifications/notification.dart';
+import 'package:sattaking/internationalisation/language_controller.dart';
 
 class login_view extends StatefulWidget {
   const login_view({super.key});
@@ -19,6 +21,7 @@ class login_view extends StatefulWidget {
 class _login_viewState extends State<login_view> {
   NotificationServices services = NotificationServices();
   loginController controller = Get.put(loginController());
+  Applanguagecontroller language_controller = Get.put(Applanguagecontroller());
 
   @override
   void initState() {
@@ -56,8 +59,56 @@ class _login_viewState extends State<login_view> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: Get.height * 0.18,
+                  height: Get.height * 0.08,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Get.bottomSheet(Wrap(
+                          children: [
+                            Row(
+                              children: [
+                                Text('English'),
+                                Spacer(),
+                                Radio(
+                                  value: '',
+                                  groupValue: '',
+                                  onChanged: (val) {},
+                                ),
+                              ],
+                            ),
+                          ],
+                        ));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(
+                          5,
+                        ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            5,
+                          ),
+                          color: appcolor().ambercolor,
+                        ),
+                        child: Text(
+                          'Translate',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(
+                  height: Get.height * 0.12,
+                ),
+
                 Container(
                   height: Get.height * 0.18,
                   child: Image(
@@ -70,12 +121,12 @@ class _login_viewState extends State<login_view> {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield('Mobile Number :', TextInputType.phone, 10,
+                customfield('Mobile Number'.tr, TextInputType.phone, 10,
                     Icons.call, controller.mobilecontroller, false),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                customfield('Password :', TextInputType.visiblePassword, 20,
+                customfield('Password'.tr, TextInputType.visiblePassword, 20,
                     Icons.lock, controller.password_controller, true),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -90,7 +141,7 @@ class _login_viewState extends State<login_view> {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           alignment: Alignment.centerLeft),
                       child: Text(
-                        'Forgot Password?',
+                        'Forgot Password'.tr + '?',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -100,38 +151,43 @@ class _login_viewState extends State<login_view> {
                   ],
                 ).paddingSymmetric(horizontal: 12),
                 Obx(
-                  () =>controller.show_Circle.value==false? InkWell(
-                    onTap: () {
-                      String mobile_no =
-                          controller.mobilecontroller.text.trim().toString();
-                      String password =
-                          controller.password_controller.text.trim().toString();
+                  () => controller.show_Circle.value == false
+                      ? InkWell(
+                          onTap: () {
+                            String mobile_no = controller.mobilecontroller.text
+                                .trim()
+                                .toString();
+                            String password = controller
+                                .password_controller.text
+                                .trim()
+                                .toString();
 
-                      controller.FirebaseLogin(mobile_no, password);
-                      // Get.to(all_game_view());
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(
-                        5,
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          5,
+                            controller.FirebaseLogin(mobile_no, password);
+                            // Get.to(all_game_view());
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(
+                              5,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                5,
+                              ),
+                              color: appcolor().ambercolor,
+                            ),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        )
+                      : CircularProgressIndicator(
+                          color: appcolor().ambercolor,
                         ),
-                        color: appcolor().ambercolor,
-                      ),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ):CircularProgressIndicator(
-                    color: appcolor().ambercolor,
-                  ),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
@@ -161,54 +217,55 @@ class _login_viewState extends State<login_view> {
                   ],
                 ),
                 SizedBox(
-                  height: Get.height * 0.15,
+                  height: Get.height * 0.1,
                 ),
-                Text(
-                  'Contact Us',
-                  style: TextStyle(
-                    color: appcolor().ambercolor,
-                    fontSize: 18,
-                  ),
-                ),
-                Divider(
-                  color: appcolor().ambercolor,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.call,
-                          color: appcolor().ambercolor,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.whatsapp,
-                          color: Colors.green,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                contactUs_Widget(),
+                // Text(
+                //   'Contact Us',
+                //   style: TextStyle(
+                //     color: appcolor().ambercolor,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                // Divider(
+                //   color: appcolor().ambercolor,
+                //   thickness: 1,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     Row(
+                //       children: [
+                //         Icon(
+                //           Icons.call,
+                //           color: appcolor().ambercolor,
+                //         ),
+                //         Text(
+                //           '+91 12345 56787',
+                //           style: TextStyle(
+                //             color: appcolor().ambercolor,
+                //             fontSize: 16,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //     Row(
+                //       children: [
+                //         Icon(
+                //           FontAwesomeIcons.whatsapp,
+                //           color: Colors.green,
+                //         ),
+                //         Text(
+                //           '+91 12345 56787',
+                //           style: TextStyle(
+                //             color: appcolor().ambercolor,
+                //             fontSize: 16,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
               ],
             ).paddingSymmetric(
               horizontal: 20,
@@ -266,5 +323,13 @@ class _login_viewState extends State<login_view> {
         ],
       ),
     );
+  }
+
+  Widget custombottomsheet(BuildContext context) {
+    return BottomSheet(
+        onClosing: () {},
+        builder: (context) {
+          return Container();
+        });
   }
 }

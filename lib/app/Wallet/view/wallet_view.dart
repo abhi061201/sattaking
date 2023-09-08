@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sattaking/app/Wallet/view/add_funds_view.dart';
+import 'package:sattaking/app/Wallet/view/withdraw_funds_view.dart';
 import 'package:sattaking/app/global/colors.dart';
 import 'package:sattaking/app/global/contactUs_Widget.dart';
 import 'package:sattaking/app/global/custom_drawer.dart';
@@ -127,6 +128,7 @@ class Wallet_view extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           // Get.to()
+                          Get.to(withdraw_funds_view());
                         },
                         child: Container(
                           margin:
