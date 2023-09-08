@@ -6,6 +6,7 @@ import 'package:sattaking/app/auth/login/view/login.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/forgot_password_controller.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/sign%20up%20controller.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/contactUs_Widget.dart';
 
 class forgot_Password_view extends StatelessWidget {
   forgot_Password_view({super.key});
@@ -48,7 +49,7 @@ class forgot_Password_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield('Mobile Number :', TextInputType.phone, 10,
+                customfield('Mobile Number'.tr, TextInputType.phone, 10,
                     forgot_controller.phone_controller, Icons.call),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.end,
@@ -104,7 +105,7 @@ class forgot_Password_view extends StatelessWidget {
                               color: appcolor().ambercolor,
                             ),
                             child: Text(
-                              'Send Email',
+                              'Send Email'.tr,
                               style: TextStyle(
                                 fontSize: 18,
                               ),
@@ -118,52 +119,8 @@ class forgot_Password_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.4,
                 ),
-              Text(
-                  'Contact Us',
-                  style: TextStyle(
-                    color: appcolor().ambercolor,
-                    fontSize: 18,
-                  ),
-                ),
-                Divider(
-                  color: appcolor().ambercolor,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.call,
-                          color: appcolor().ambercolor,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.whatsapp,
-                          color: Colors.green,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+
+                contactUs_Widget(),
               ],
             ).paddingSymmetric(horizontal: 20),
           ),

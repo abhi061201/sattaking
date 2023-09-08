@@ -8,6 +8,7 @@ import 'package:sattaking/app/auth/login/view/login.dart';
 import 'package:sattaking/app/auth/sign%20Up/controller/sign%20up%20controller.dart';
 import 'package:sattaking/app/auth/sign%20Up/view/forgot_password_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/contactUs_Widget.dart';
 import 'package:sattaking/app/profile/view/profile_view.dart';
 
 class signup_view extends StatelessWidget {
@@ -53,17 +54,17 @@ class signup_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customfield('Name :', TextInputType.name, 30,
+                customfield('Name'.tr, TextInputType.name, 30,
                     controller.nameController, Icons.person, false),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                customfield('Email id :', TextInputType.emailAddress, 30,
+                customfield('Email id'.tr, TextInputType.emailAddress, 30,
                     controller.emailcontroller, Icons.email, false),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                customfield('Mobile Number :', TextInputType.phone, 10,
+                customfield('Mobile Number'.tr, TextInputType.phone, 10,
                     controller.phone_no_Controller, Icons.call, false),
                 SizedBox(
                   height: Get.height * 0.01,
@@ -97,7 +98,7 @@ class signup_view extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 0),
-                              hintText: 'Password :',
+                              hintText: 'Password'.tr,
                               hintStyle: TextStyle(
                                 color: appcolor().ambercolor,
                                 fontSize: 18,
@@ -143,10 +144,10 @@ class signup_view extends StatelessWidget {
                             //         .get();
                             // if(snapshot==null)
                             // {
-                              
+
                             // }
                             controller.signUpUsingEmail_Password();
-                            
+
                             // Get.to(profile_view());
                           },
                           child: Container(
@@ -162,7 +163,7 @@ class signup_view extends StatelessWidget {
                               color: appcolor().ambercolor,
                             ),
                             child: Text(
-                              'Register Now',
+                              'Register Now'.tr,
                               style: TextStyle(
                                 fontSize: 18,
                               ),
@@ -180,7 +181,7 @@ class signup_view extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already Registered?',
+                      'Already Registered'.tr + '?',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -191,7 +192,7 @@ class signup_view extends StatelessWidget {
                         Get.offAll(() => login_view());
                       },
                       child: Text(
-                        'Login Now',
+                        'Login Now'.tr,
                         style: TextStyle(
                           color: appcolor().ambercolor,
                           fontSize: 16,
@@ -203,52 +204,7 @@ class signup_view extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 0.08,
                 ),
-                Text(
-                  'Contact Us',
-                  style: TextStyle(
-                    color: appcolor().ambercolor,
-                    fontSize: 18,
-                  ),
-                ),
-                Divider(
-                  color: appcolor().ambercolor,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.call,
-                          color: appcolor().ambercolor,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.whatsapp,
-                          color: Colors.green,
-                        ),
-                        Text(
-                          '+91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                contactUs_Widget(),
               ],
             ).paddingSymmetric(horizontal: 20),
           ),

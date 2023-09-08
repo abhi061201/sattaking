@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:sattaking/app/global/colors.dart';
 
 class game_view extends StatelessWidget {
-  const game_view({super.key});
-
+   game_view({super.key});
+  String gamelist='GameList'.tr;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +33,7 @@ class game_view extends StatelessWidget {
                       height: Get.height * 0.08,
                     ),
                     Text(
-                      'GameList \nFARIDABAD',
+                      '{$gamelist} \nFARIDABAD',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,

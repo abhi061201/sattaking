@@ -7,6 +7,7 @@ import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:sattaking/app/ImagePicker/imagePicker.dart';
 import 'package:sattaking/app/all_game/view/all_games_view.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/contactUs_Widget.dart';
 
 class edit_profile_view extends StatelessWidget {
   edit_profile_view({super.key});
@@ -34,7 +35,7 @@ class edit_profile_view extends StatelessWidget {
               slivers: [
                 SliverList.list(
                   children: [
-                    SizedBox(height: Get.height * 0.15),
+                    SizedBox(height: Get.height * 0.1),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -47,17 +48,22 @@ class edit_profile_view extends StatelessWidget {
                         SizedBox(
                           height: Get.height * 0.02,
                         ),
-                        customfield('Edit Name', TextInputType.name, 30,
-                            TextEditingController(), Icons.person),
                         customfield(
-                          'Edit Email',
+                          'Edit Name'.tr,
+                          TextInputType.name,
+                          30,
+                          TextEditingController(),
+                          Icons.person,
+                        ),
+                        customfield(
+                          'Edit Email'.tr,
                           TextInputType.emailAddress,
                           30,
                           TextEditingController(),
                           Icons.email,
                         ),
                         customfield(
-                          'Edit Phone No.',
+                          'Edit Phone No.'.tr,
                           TextInputType.phone,
                           30,
                           TextEditingController(),
@@ -78,7 +84,7 @@ class edit_profile_view extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                'Change Image :',
+                                'Change Image'.tr,
                                 style: TextStyle(
                                   color: appcolor().ambercolor,
                                   fontSize: 13,
@@ -130,7 +136,7 @@ class edit_profile_view extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       child: Text(
-                                        'Remove Image',
+                                        'Remove Image'.tr,
                                         style: TextStyle(
                                           color: Colors.white,
                                         ),
@@ -155,7 +161,7 @@ class edit_profile_view extends StatelessWidget {
                                       ),
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    'Edit Image',
+                                    'Edit Image'.tr,
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -182,7 +188,7 @@ class edit_profile_view extends StatelessWidget {
                                 ),
                                 borderRadius: BorderRadius.circular(8)),
                             child: Text(
-                              'Submit',
+                              'Submit'.tr,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -192,13 +198,7 @@ class edit_profile_view extends StatelessWidget {
                         SizedBox(
                           height: Get.height * 0.1,
                         ),
-                        Text(
-                          'Helpline No: +91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        )
+                        contactUs_Widget(),
                       ],
                     ),
                   ],

@@ -79,7 +79,7 @@ class Bid_History_view extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'Bid History',
+                          'Bid History'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -109,7 +109,7 @@ class Bid_History_view extends StatelessWidget {
                               Obx(
                                 () => controller.startdate.value == ''
                                     ? Text(
-                                        'Start Date',
+                                        'Start Date'.tr,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -156,7 +156,7 @@ class Bid_History_view extends StatelessWidget {
                               Obx(
                                 () => controller.enddate.value == ''
                                     ? Text(
-                                        'End Date',
+                                        'End Date'.tr,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -195,7 +195,7 @@ class Bid_History_view extends StatelessWidget {
                             color: appcolor().ambercolor,
                           ),
                           child: Text(
-                            'Submit',
+                            'Submit'.tr,
                             style: TextStyle(
                               fontSize: 18,
                             ),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:sattaking/app/global/colors.dart';
 
 Widget contactUs_Widget() {
   return Column(
     children: [
       Text(
-        'Contact Us',
+        'Contact Us'.tr,
         style: TextStyle(
           color: appcolor().ambercolor,
           fontSize: 18,

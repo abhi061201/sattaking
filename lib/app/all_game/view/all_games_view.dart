@@ -226,7 +226,7 @@ class all_game_view extends StatelessWidget {
               Get.to(game_view());
             },
             child: Text(
-              'Open',
+              'Open'.tr,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 15,
@@ -236,7 +236,7 @@ class all_game_view extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Text(
-              'Close',
+              'Close'.tr,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 15,

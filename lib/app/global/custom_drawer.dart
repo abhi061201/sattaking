@@ -59,7 +59,7 @@ class custom_drawer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Name',
+                        'Name'.tr,
                         style: TextStyle(
                           color: appcolor().ambercolor,
                           fontSize: 16,
@@ -81,7 +81,7 @@ class custom_drawer extends StatelessWidget {
               height: 10,
             ),
             drawerItemWidget(
-              text: 'Home',
+              text: 'Home'.tr,
               iconData: Icons.home,
               callback: () {
                 Get.back();
@@ -89,7 +89,7 @@ class custom_drawer extends StatelessWidget {
               },
             ),
             drawerItemWidget(
-              text: 'Update Profile',
+              text: 'Update Profile'.tr,
               iconData: FontAwesomeIcons.addressBook,
               callback: () {
                 Get.back();
@@ -97,7 +97,7 @@ class custom_drawer extends StatelessWidget {
               },
             ),
             drawerItemWidget(
-              text: 'Add Fund',
+              text: 'Add Fund'.tr,
               iconData: Icons.wallet,
               callback: () {
                 Get.back();
@@ -105,7 +105,7 @@ class custom_drawer extends StatelessWidget {
               },
             ),
              drawerItemWidget(
-              text: 'Withdraw Fund',
+              text: 'Withdraw Fund'.tr,
               iconData: Icons.wallet,
               callback: () {
                 Get.back();
@@ -113,7 +113,7 @@ class custom_drawer extends StatelessWidget {
               },
             ),
             drawerItemWidget(
-              text: 'History',
+              text: 'History'.tr,
               iconData: Icons.history,
               callback: () {
                 Get.back();
@@ -121,32 +121,32 @@ class custom_drawer extends StatelessWidget {
               },
             ),
             drawerItemWidget(
-              text: 'How to play',
+              text: 'How to play'.tr,
               iconData: Icons.video_camera_back,
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'App Rating',
+              text: 'App Rating'.tr,
               iconData: FontAwesomeIcons.star,
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'Share',
+              text: 'Share'.tr,
               iconData: Icons.share,
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'Contact Us',
+              text: 'Contact Us'.tr,
               iconData: FontAwesomeIcons.phone,
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'Notifications',
+              text: 'Notifications'.tr,
               iconData: Icons.notifications,
               callback: () {},
             ),
             drawerItemWidget(
-              text: 'Logout',
+              text: 'Logout'.tr,
               iconData: Icons.logout,
               callback: () {},
             ),

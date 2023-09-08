@@ -66,21 +66,7 @@ class _login_viewState extends State<login_view> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.bottomSheet(Wrap(
-                          children: [
-                            Row(
-                              children: [
-                                Text('English'),
-                                Spacer(),
-                                Radio(
-                                  value: '',
-                                  groupValue: '',
-                                  onChanged: (val) {},
-                                ),
-                              ],
-                            ),
-                          ],
-                        ));
+                        Get.bottomSheet(custombottomsheet());
                       },
                       child: Container(
                         margin: EdgeInsets.all(
@@ -95,7 +81,7 @@ class _login_viewState extends State<login_view> {
                           color: appcolor().ambercolor,
                         ),
                         child: Text(
-                          'Translate',
+                          'Translate'.tr,
                           style: TextStyle(
                             fontSize: 18,
                           ),
@@ -178,7 +164,7 @@ class _login_viewState extends State<login_view> {
                               color: appcolor().ambercolor,
                             ),
                             child: Text(
-                              'Login',
+                              'Login'.tr,
                               style: TextStyle(
                                 fontSize: 18,
                               ),
@@ -196,7 +182,7 @@ class _login_viewState extends State<login_view> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a Member?',
+                      'Not a Member'.tr + ' ?',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -207,7 +193,7 @@ class _login_viewState extends State<login_view> {
                         Get.offAll(() => signup_view());
                       },
                       child: Text(
-                        'Register Now',
+                        'Register Now'.tr,
                         style: TextStyle(
                           color: appcolor().ambercolor,
                           fontSize: 16,
@@ -325,11 +311,188 @@ class _login_viewState extends State<login_view> {
     );
   }
 
-  Widget custombottomsheet(BuildContext context) {
-    return BottomSheet(
-        onClosing: () {},
-        builder: (context) {
-          return Container();
-        });
+  Widget custombottomsheet() {
+    return Container(
+      color: Colors.white,
+      child: Wrap(
+        children: [
+          // english
+          Row(
+            children: [
+              Text(
+                'English',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'English',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('en', 'US');
+                  },
+                ),
+              ),
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // hindi
+          Row(
+            children: [
+              Text(
+                'हिंदी',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'हिंदी',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('hi', 'IN');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // punjabi
+          Row(
+            children: [
+              Text(
+                'ਪੰਜਾਬੀ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'ਪੰਜਾਬੀ',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('pu', 'PU');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // bengali
+          Row(
+            children: [
+              Text(
+                'বাংলা',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'বাংলা',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('be', 'BE');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // Gujrati
+          Row(
+            children: [
+              Text(
+                'গুজরাটি',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'গুজরাটি',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('gu', 'GU');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // marathi
+          Row(
+            children: [
+              Text(
+                'मराठी',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'मराठी',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('ma', 'MA');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+          // tamil
+          Row(
+            children: [
+              Text(
+                'தமிழ்',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Spacer(),
+              Obx(
+                () => Radio(
+                  value: 'தமிழ்',
+                  groupValue: language_controller.groupValue.value,
+                  onChanged: (val) {
+                    language_controller.groupValue.value = val.toString();
+                    language_controller.changeLanguage('ta', 'TA');
+                  },
+                ),
+              )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20,
+          ),
+        ],
+      ),
+    );
   }
 }

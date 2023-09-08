@@ -9,6 +9,9 @@ import 'package:sattaking/app/global/model/user_model.dart';
 import 'package:sattaking/app/home/view/home_view.dart';
 
 class loginController extends GetxController {
+
+  
+
   TextEditingController mobilecontroller = TextEditingController();
   TextEditingController password_controller = TextEditingController();
   RxBool show_Circle = false.obs;

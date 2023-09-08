@@ -81,7 +81,7 @@ class add_funds_view extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'Add Funds',
+                          'Add Funds'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -117,7 +117,7 @@ class add_funds_view extends StatelessWidget {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 0),
-                                  hintText: 'Add Funds',
+                                  hintText: 'Add Funds'.tr,
                                   hintStyle: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -139,7 +139,7 @@ class add_funds_view extends StatelessWidget {
                       ),
                       Container(
                         child: Text(
-                          'Select Payment Mthods',
+                          'Select Payment Mthods'.tr,
                           style: TextStyle(
                             color: appcolor().ambercolor,
                             fontSize: 20,

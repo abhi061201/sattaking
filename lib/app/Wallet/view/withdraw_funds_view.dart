@@ -81,7 +81,7 @@ class withdraw_funds_view extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'Withdraw Funds',
+                          'Withdraw Funds'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -105,7 +105,7 @@ class withdraw_funds_view extends StatelessWidget {
 
                           children: [
                             Text(
-                              'Available Points',
+                              'Available Points'.tr,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -135,7 +135,7 @@ class withdraw_funds_view extends StatelessWidget {
                       ),
                       Container(
                         child: Text(
-                          'You Can Only Withdraw Funds\nBetween 10:00 AM To 3:00 PM ',
+                          'You Can Only Withdraw Funds\nBetween 10:00 AM To 3:00 PM '.tr,
                           style: TextStyle(
                             color: appcolor().ambercolor,
                             fontSize: 20,
@@ -172,7 +172,7 @@ class withdraw_funds_view extends StatelessWidget {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 0),
-                                  hintText: 'Withdraw Points',
+                                  hintText: 'Withdraw Points'.tr,
                                   hintStyle: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -207,7 +207,7 @@ class withdraw_funds_view extends StatelessWidget {
                             color: appcolor().ambercolor,
                           ),
                           child: Text(
-                            'Submit',
+                            'Submit'.tr,
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -215,7 +215,7 @@ class withdraw_funds_view extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: Get.height * 0.23,
+                        height: Get.height * 0.2,
                       ),
                       contactUs_Widget(),
                     ],

@@ -81,7 +81,7 @@ class Wallet_view extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'Wallet',
+                          'Wallet'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -109,7 +109,7 @@ class Wallet_view extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Add Funds',
+                                'Add Funds'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
@@ -147,7 +147,7 @@ class Wallet_view extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Withdraw Funds',
+                                'Withdraw Funds'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,

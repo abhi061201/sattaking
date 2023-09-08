@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:sattaking/app/global/colors.dart';
+import 'package:sattaking/app/global/contactUs_Widget.dart';
 import 'package:sattaking/app/global/custom_drawer.dart';
 import 'package:sattaking/app/global/firebase_helper.dart';
 import 'package:sattaking/app/profile/view/edit_profile_view.dart';
@@ -60,20 +61,47 @@ class profile_view extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundColor: Colors.black,
-                          child: Icon(Icons.person, size: 50,),
+                          child: Icon(
+                            Icons.person,
+                            size: 50,
+                          ),
                           radius: 50,
                         ),
                         SizedBox(
                           height: Get.height * 0.02,
                         ),
-                        customContainer('Profile', Icons.person,(){
-                          Get.off(edit_profile_view());
-                        } ),
-                        customContainer('Payment', FontAwesomeIcons.paypal,(){}),
-                        customContainer('AppStore', FontAwesomeIcons.appStore,(){}),
-                        customContainer('Rating', Icons.rate_review,(){}),
-                        customContainer('Website Link', Icons.link,(){}),
-                        customContainer('Change Password', Icons.person,(){}),
+                        customContainer(
+                          'Profile'.tr,
+                          Icons.person,
+                          () {
+                            Get.off(edit_profile_view());
+                          },
+                        ),
+                        customContainer(
+                          'Payment'.tr,
+                          FontAwesomeIcons.paypal,
+                          () {},
+                        ),
+                        customContainer(
+                          'AppStore'.tr,
+                          FontAwesomeIcons.appStore,
+                          () {},
+                        ),
+                        customContainer(
+                          'Rating'.tr,
+                          Icons.rate_review,
+                          () {},
+                        ),
+                        customContainer(
+                          'Website Link'.tr,
+                          Icons.link,
+                          () {},
+                        ),
+                        customContainer(
+                          'Change Password'.tr,
+                          Icons.person,
+                          () {},
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -93,7 +121,7 @@ class profile_view extends StatelessWidget {
                                     ),
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Text(
-                                  'Logout',
+                                  'Logout'.tr,
                                   style: TextStyle(
                                     color: appcolor().ambercolor,
                                   ),
@@ -105,13 +133,7 @@ class profile_view extends StatelessWidget {
                         SizedBox(
                           height: Get.height * 0.1,
                         ),
-                        Text(
-                          'Helpline No: +91 12345 56787',
-                          style: TextStyle(
-                            color: appcolor().ambercolor,
-                            fontSize: 16,
-                          ),
-                        )
+                        contactUs_Widget(),
                       ],
                     ),
                   ],
