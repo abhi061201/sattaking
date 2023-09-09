@@ -80,7 +80,7 @@ class History_view extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'History',
+                          'History'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -108,7 +108,7 @@ class History_view extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Bid History',
+                                'Bid History'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
@@ -145,7 +145,7 @@ class History_view extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Win History',
+                                'Win History'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,

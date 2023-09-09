@@ -190,7 +190,7 @@ class _login_viewState extends State<login_view> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offAll(() => signup_view());
+                        Get.to(() => signup_view());
                       },
                       child: Text(
                         'Register Now'.tr,
