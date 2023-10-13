@@ -10,7 +10,6 @@ import 'package:sattaking/app/home/view/home_view.dart';
 
 class loginController extends GetxController {
 
-  
 
   TextEditingController mobilecontroller = TextEditingController();
   TextEditingController password_controller = TextEditingController();
